@@ -1,0 +1,97 @@
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Leaves</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-striped custom-table mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Employee ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let allemployee of this.response">
+                            <td><button mat-button color="primary" (click)="id(allemployee.Employee_id)">{{allemployee.Employee_id}}</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Right side Payment details -->
+        </div>
+        <div class="col-xl-9 col-lg-6" *ngIf="this.submitted">
+            <div class="row">
+                <div class="col-md-4 form-group">       
+                    <label>Employee ID</label>  
+                    <input type="text" maxlength="10" class="form-control" name="EmployeeID" id="EmployeeID" disabled placeholder="{{this.ID}}">   
+                </div>
+                <!-- <div class=" col-md-3 form-group">    
+                    <label>First Name<span style="color:red;">*</span></label>    
+                    <input  [(ngModel)]="paystub.Basic_Salary" type="text" class="form-control" name="Basic_Salary" id="Basic_Salary" required>        
+                        <small class="text-danger">First Name is required</small>    
+                    </div>   -->
+                <div class="col-md-4 form-group">    
+                    <label>Basic Salary</label>  
+                    <!-- <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="BasicSalary" id="BasicSalary" [(ngModel)]="this.paystub.BasicSalary">  -->
+                    <input [(ngModel)]="paystub.Basic_Salary" type="number" class="form-control" name="BasicSalary" id="BasicSalary">          
+                </div>  
+                <div class="col-md-2 form-group">    
+                    <label>Month </label>  
+                    <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="Month" id="Month" [(ngModel)]="this.paystub.Month">   
+                </div> 
+                <div class="col-md-4 form-group">    
+                    <label>Bank Name</label>  
+                    <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="BankName" id="BankName" [(ngModel)]="this.paystub.BankName">   
+                </div> 
+                <div class="col-md-4 form-group">    
+                    <label>Account No.</label>  
+                    <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="AccountNo" id="AccountNo" [(ngModel)]="this.paystub.AccountNo">   
+                </div>   
+                <div class="col-md-4 form-group">    
+                    <label>Tax Applied</label>  
+                    <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="TaxApplied" id="TaxApplied" [(ngModel)]="this.paystub.TaxApplied">   
+                </div>
+                <div class="col-md-4 form-group">    
+                    <label>Institution Code</label>  
+                    <input type="text" [disabled]="isEditClicked" maxlength="10" class="form-control" name="instCode" id="instCode" [(ngModel)]="this.paystub.instCode">   
+                </div>
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-success btn-block"(click)="addpayment()" >Submit Payment</button>
+                </div>
+                <!-- <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Payment Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basic Pay</td>
+                        </tr>
+                        <tr>
+                            <td>Allowance</td>
+                        </tr>
+                        <tr>
+                            <td>Deductions</td>
+                        </tr>
+                        <tr>
+                            <td>PF Contributions</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <!-- <div class="col-md-4 text-right">
+                    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div> 

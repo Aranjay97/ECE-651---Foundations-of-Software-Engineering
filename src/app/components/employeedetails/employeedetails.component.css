@@ -1,0 +1,19 @@
+.mat-button-toggle-checked{
+    background-color: #2979FF;
+    color: white;
+}
+::ng-deep .mat-button-toggle-checked button {
+    color: white;
+}
+
+label{
+    margin-bottom: 0rem;
+}
+.matButtonToggleGroup{
+    margin-left: 32%;
+    border-radius: 7px;
+}
+.matButtonToggle{
+    padding: 0 0px;
+    width: 200px;
+}

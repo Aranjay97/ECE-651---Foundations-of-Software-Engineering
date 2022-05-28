@@ -1,0 +1,226 @@
+<h1>Organization</h1>
+<div class="text-right m-2">
+    <button (click)="openModal('custom-modal-1')" class="btn btn-primary ml-2" type="submit">+ ADD EMPLOYEE</button>       
+</div>
+<div class="text-right m-2">
+    <div class="form-group" *ngIf="showAEsuccessMessage">
+        <label style="text-align: center;margin-left: 25px;color: green;">ADD Employee - SUCCESS</label>
+    </div> 
+    <div class="form-group" *ngIf="showAEErrorMessage">
+        <label style="text-align: center;margin-left: 25px;color: red;">ADD Employee - FAILED</label>
+    </div> 
+</div>
+
+<div class="text-right m-2">
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header" style="padding-left: 40%;">
+            <h4 class="modal-title" id="modal-basic-title" style="margin:0 0 0px"><b>Delete Employee</b></h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <p>Please enter <b>Employee ID</b> of the employee to delete employee</p>
+                <div class="row">
+                    <div class=" col-md-3 form-group"></div>
+                    <div class=" col-md-6 form-group">    
+                    <input [(ngModel)]="delemp.Employee_id" type="text" class=" form-control text-uppercase">    
+                    </div>
+                    <div class="form-group" *ngIf="showsuccessMessage">
+                        <label style="text-align: center;margin-left: 150px;color: green;">Employee deleted successfully</label>
+                    </div> 
+                    <div class="form-group" *ngIf="showErrorMessage">
+                        <label style="text-align: center;margin-left: 150px;color: red;">Employee doesn't exist</label>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class=" col-md-4 form-group" style="flex:0 0 37.499999985%;max-width:37.499999985%"></div>
+                    <div class=" col-md-2 form-group">    
+                        <button class="btn btn-primary ml-2" *ngIf="!showsuccessMessage" (click)="delemployee()">Submit</button>
+                    </div>
+                </div>
+        </div>
+    </ng-template>
+    <!-- <button class="btn btn-primary ml-2" (click)="open(content)">- DELETE EMPLOYEE</button> -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped custom-table mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email ID</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let allemployee of this.response">
+                        <td>{{allemployee.Employee_id}}</td>
+                        <td>{{allemployee.First_Name}}</td>
+                        <td>{{allemployee.Last_Name}}</td>
+                        <td>{{allemployee.Email_Id}}</td>
+                        <td>{{allemployee.Phone_Number}}</td>
+                        <td><button mat-raised-button color="warn" (click)="open(content)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<jw-modal id="custom-modal-1">
+    <h1 style="text-align:center;">ADD EMPLOYEE</h1>
+    <div class="container-fluid">    
+        <div>    
+            <form #frmEmployee="ngForm" (ngSubmit)="frmEmployee.form.valid && addemployee()"> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&nbsp;</p>    
+                    </div>
+                    <div class=" col-md-3 form-group">    
+                        <label>First Name<span style="color:red;">*</span></label>    
+                        <input  [(ngModel)]="addemp.First_Name" type="text" class="form-control" name="First_Name" id="First_Name" required>        
+                            <small class="text-danger">First Name is required</small>    
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Last Name<span style="color:red;">*</span></label>    
+                        <input  [(ngModel)]="addemp.Last_Name" type="text" class=" form-control" name="Last_Name" id="Last_Name" required>    
+                            <small class="text-danger">Last Name is required</small>    
+                        </div>
+                    <!-- <div class=" col-md-3 form-group">    
+                        <label>Temporary Password<span style="color:red;">*</span></label>    
+                        <input  [(ngModel)]="addemp.Password" type="text" class="form-control" name="Password" id="Password" required>        
+                            <small class="text-danger">Temporary Password is required</small>    
+                        </div>  -->
+                    <div class="col-md-3 form-group">    
+                        <label>Mobile<span style="color:red;">*</span></label>    
+                        <input  [(ngModel)]="addemp.Phone_Number" type="text" maxlength="10" class="form-control" name="Phone_Number" id="Phone_Number" required>    
+                            <div>    
+                                <small class="text-danger">Mobile Number is required</small>    
+                                <small class="text-danger">Must be 10 digits</small>    
+                            </div>    
+                        </div>
+                    <div class="col-md-4 form-group">    
+                        <label>Email ID<span style="color:red;">*</span></label>    
+                        <input  [(ngModel)]="addemp.Email_Id" type="email" class="form-control" name="Email" id="Email" required>    
+                            <div>    
+                                <small class="text-danger">Email is required</small>    
+                                <small class="text-danger">Format like @ ,.com</small>    
+                            </div>    
+                        </div>
+                    <div class="col-md-4 form-group">    
+                        <label>Alternate Email ID</label>    
+                        <input type="email" class="form-control" name="Email" id="Email">    
+                            <div>    
+                                <small class="text-danger">Format like @ ,.com</small>    
+                            </div>    
+                    </div>  
+                    <div class=" col-md-2 form-group">    
+                        <label>DOB<span style="color:red;">*</span></label>    
+                        <input type="date" class="form-control"name="Dob" id="Dob">    
+                    </div>
+                    <div class="col-md-2 form-group">    
+                        <label>Gender<span style="color:red;">*</span></label>    
+                        <select name="Gender" class="form-control" [(ngModel)]="addemp.Gender">    
+                            <option value="">-Select-</option>
+                            <option value="M">M</option>
+                            <option value="F">F</option>  
+                        </select>    
+                        <small class="text-danger">Gender is required</small>    
+                </div>
+                <div class="col-md-2 form-group">    
+                    <label>Marital Status</label>    
+                    <select name="Gender" class="form-control" [(ngModel)]="addemp.Marital_Status">    
+                        <option value="">-Select-</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Divorced">Divorced</option> 
+                    </select>    
+                </div>  
+                    <div class=" col-md-3 form-group">    
+                        <label>Emergency Contact Name<span style="color:red;">*</span></label>    
+                        <input [(ngModel)]="addemp.Emergency_Contact_Name" type="text" class=" form-control" name="Emergency_Contact_Name" id="Emergency_Contact_Name">    
+                            <small class="text-danger">Name is required</small>    
+                        </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Emergency Contact Mobile<span style="color:red;">*</span></label>    
+                        <input [(ngModel)]="addemp.Emergency_Contact_Number" type="text" maxlength="10" class="form-control" name="Emergency_Contact_Number" id="Emergency_Contact_Number">    
+                        <div>    
+                            <small class="text-danger">Mobile Number is required</small>    
+                            <small class="text-danger">Must be 10 digits</small>    
+                        </div>    
+                    </div>    
+                </div>    
+                <hr class="line"> 
+                <div class="row">    
+                    <h4 class="ml-2 col-md-12 mb-3">    
+                        <strong>Work Details</strong>    
+                    </h4>
+                    <div class="col-md-1 form-group">    
+                    </div>           
+                </div>      
+            </form>    
+        </div>    
+    </div> 
+    <div class="container-fluid">    
+        <div>    
+            <form>    
+                <div class="row">
+                    <div class=" col-md-3 form-group">    
+                        <label>Date of Joining<span style="color:red;">*</span></label>    
+                        <input type="date" class="form-control"name="Doj" id="Doj" [(ngModel)]="addemp.Date_of_Joining">    
+                            <small class="text-danger">Doj is required!</small>    
+                        </div>  
+                    <div class=" col-md-3 form-group">    
+                        <label> Designation<span style="color:red;">*</span></label>    
+                        <input type="text" class=" form-control"name="Designation" id="Designation" [(ngModel)]="addemp.Designation">    
+                            <small class="text-danger">Designation is required</small>    
+                        </div>
+                    <div class=" col-md-3 form-group">    
+                        <label> Department<span style="color:red;">*</span></label>    
+                        <input type="text" class=" form-control" name="Department" id="Department" [(ngModel)]="addemp.Department">    
+                            <small class="text-danger">Department is required</small>    
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Employee Status<span style="color:red;">*</span></label>    
+                        <input type="text" class=" form-control" name="Employee_Status" id="Employee_Status" [(ngModel)]="addemp.Employee_Status">    
+                            <small class="text-danger">Employee Status is required</small>    
+                        </div>
+                    <div class=" col-md-3 form-group">    
+                        <label> Reporting To</label>    
+                        <input type="text" class=" form-control" name="Reporting_To" id="Reporting_To" [(ngModel)]="addemp.Reporting_To">    
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Employee Type<span style="color:red;">*</span></label>    
+                        <input type="text" class=" form-control" name="Employee_Type" id="Employee_Type" [(ngModel)]="addemp.Employee_Type">    
+                            <small class="text-danger">Employee Type is required</small>    
+                        </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Work Phone</label>    
+                        <input type="text" maxlength="10" class="form-control" name="WorkPhone" id="WorkPhone" [(ngModel)]="addemp.Work_Phone">    
+                        <div>    
+                            <small class="text-danger">Mobile number must be 10 digits</small>    
+                        </div>    
+                    </div> 
+                    <div class="col-md-3 form-group">    
+                        <label>Role</label>    
+                        <input type="text" class=" form-control text-uppercase" id="Role" maxlength="50">    
+                    </div>   
+                    <div class="col-md-2 form-group">    
+                        <label>CTC<span style="color:red;">*</span></label>    
+                        <input type="text" maxlength="10" class="form-control" name="CTC" id="CTC" [(ngModel)]="addemp.CTC">     
+                        <small class="text-danger">CTC is required</small>    
+                    </div>      
+                </div>      
+            </form> 
+            <div class="text-right m-2">    
+                <button (click)="closeModal('custom-modal-1');addemployee();" class="btn btn-primary ml-2" type="reset">Submit</button>       
+            </div>      
+        </div>    
+    </div> 
+</jw-modal>

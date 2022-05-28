@@ -1,0 +1,140 @@
+<div class="example-container">
+<!-- -------------------------------HEADER----------------------------------- -->
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button>
+                <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
+            </button>
+            <span style="font-size: 25px;">Employee Management System</span>
+            <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" style="height: 100%;">
+                <ul fxLayout="row" fxLayoutGap="20px" style="padding-top: 10px;">
+                    <li>
+                        <button mat-icon-button>
+                            <mat-icon class="gear">settings</mat-icon>
+                        </button>
+                    </li>
+                    <li>
+                        <button mat-icon-button>
+                            <mat-icon class="gear">help_outline</mat-icon>
+                        </button>
+                    </li>
+                    <li>
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="gear">person_outline</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" class="mat-menu">
+                            <div class="container-profile">
+                                <div class="card">
+                                    <img src="https://tinyurl.com/2p965yhk" alt="Person" class="card__image">
+                                    <h2 *ngIf="this.display" class="card__name">{{this.response[0].First_Name}}&nbsp;{{this.response[0].Last_Name}}</h2>
+                                    <h4 *ngIf="this.display" class="card_details">{{this.response[0].Employee_id}}</h4>
+                                    <h4 *ngIf="this.display" class="card_details">{{this.response[0].Email_Id}}</h4>
+                                    <h4 *ngIf="this.display" class="card_details">{{this.response[1].Designation}}</h4>
+                                    <button class="btn draw-border" routerLink="/login">Sign Out</button>
+                                    <button class="btn draw-border"(click)="open(content)">Change Password</button>
+                                </div>
+                            </div>
+                        </mat-menu>
+                    </li>
+                </ul>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <!-- -------------------------------Change-Password----------------------------------- -->
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header" style="padding-left: 40%;">
+            <h4 class="modal-title" id="modal-basic-title" style="margin:0 0 0px"><b>Change Password</b></h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <!-- <p>Please enter <b>Employee ID</b> of the employee to delete employee</p> -->
+                <div class="row">
+                    <div class=" col-md-3 form-group"></div>
+                    <div class=" col-md-6 form-group">    
+                    <label>New Password</label>    
+                    <input type="text" class=" form-control">    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-md-3 form-group"></div>
+                    <div class=" col-md-6 form-group"> 
+                        <label>Confirm Password</label>       
+                        <input [(ngModel)]="cngpwd.Password" type="text" class=" form-control">    
+                    </div>
+                    <div class="form-group" *ngIf="showsuccessMessage">
+                        <label style="text-align: center;margin-left: 150px;color: green;">Password change successful</label>
+                    </div> 
+                    <div class="form-group" *ngIf="showErrorMessage">
+                        <label style="text-align: center;margin-left: 150px;color: red;">Password change failed</label>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class=" col-md-4 form-group" style="flex:0 0 29.166666655%;max-width:29.166666655%"></div>
+                    <div class=" col-md-2 form-group">    
+                        <button class="btn btn-primary ml-2" (click)="changepwd()" *ngIf="!showsuccessMessage">Submit</button>
+                    </div>
+                </div>
+        </div>
+    </ng-template>
+
+<!-- -------------------------------SIDE-NAV----------------------------------- -->
+	<mat-sidenav-container  class="example-sidenav-container" autosize>
+		<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+			<mat-nav-list class="dashboard">
+                <a mat-list-item (click)="toggleActive($event)" routerLink="./">
+                    <mat-icon mat-list-icon >dashboard</mat-icon>
+                    <p matLine *ngIf="isExpanded">Dashboard</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="employeedetails">
+                <mat-icon mat-list-icon>account_circle</mat-icon>
+                <p matLine *ngIf="isExpanded">Personal Information</p>
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="employeeattendance">
+                    <mat-icon mat-list-icon>mail</mat-icon>
+                    <p matLine *ngIf="isExpanded">Attendance</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="leavetracker">
+                    <mat-icon mat-list-icon>inbox</mat-icon>
+                    <p matLine *ngIf="isExpanded">Leave Tracker</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="Organization">
+                    <mat-icon mat-list-icon>group</mat-icon>
+                    <p matLine *ngIf="isExpanded">Organization</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="employeepaystub" *ngIf="this.display && !this.response[0].IsOwner">
+                    <mat-icon mat-list-icon>payment</mat-icon>
+                    <p matLine *ngIf="isExpanded">Paystubs</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="employeerpaystub" *ngIf="this.display && this.response[0].IsOwner">
+                    <mat-icon mat-list-icon>payment</mat-icon>
+                    <p matLine *ngIf="isExpanded">Paystubs</p>
+                </a>
+                <a mat-list-item (click)="toggleActive($event)" routerLink="employeelist" *ngIf="this.display && this.response[0].IsOwner">
+                    <mat-icon mat-list-icon>group_add</mat-icon>
+                    <p matLine *ngIf="isExpanded">Manage Employee</p>
+                </a>
+                <mat-divider></mat-divider>
+			</mat-nav-list>
+		</mat-sidenav>
+		<div class="example-sidenav-content">
+			<router-outlet></router-outlet>
+		</div>
+	</mat-sidenav-container>
+    <mat-divider></mat-divider>
+
+<!-- -------------------------------FOOTER----------------------------------- -->
+    <footer>
+        &copy; All rights reserved 2022
+    </footer>
+</div>
+
+
+
+
+
+
+

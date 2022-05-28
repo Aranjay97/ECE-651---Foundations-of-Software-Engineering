@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 99.0.4844.84 (Windows 10)" package="" timestamp="2022-04-05T21:23:52" id="0" hostname="MSI" tests="21" errors="0" failures="0" time="0.436">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.025" classname="AppComponent"/>
+  <testcase name="AppComponent should have as title 'EMS'" time="0.003" classname="AppComponent"/>
+  <testcase name="AppComponent should render title" time="0.004" classname="AppComponent"/>
+  <testcase name="EmployeedetailsComponent should create" time="0.1" classname="EmployeedetailsComponent"/>
+  <testcase name="EmployeeattendanceComponent should create" time="0.024" classname="EmployeeattendanceComponent"/>
+  <testcase name="EmployeelistComponent submitted should be true when onSubmit()" time="0.045" classname="EmployeelistComponent"/>
+  <testcase name="EmployeelistComponent should create" time="0.015" classname="EmployeelistComponent"/>
+  <testcase name="EmployeespaystubsComponent should create" time="0.009" classname="EmployeespaystubsComponent"/>
+  <testcase name="DashboardComponent should create" time="0.019" classname="DashboardComponent"/>
+  <testcase name="ContentComponent should create" time="0.036" classname="ContentComponent"/>
+  <testcase name="OrganizationComponent should create" time="0.009" classname="OrganizationComponent"/>
+  <testcase name="ForgotPasswordComponent should create" time="0.005" classname="ForgotPasswordComponent"/>
+  <testcase name="LoginComponent should create" time="0.027" classname="LoginComponent"/>
+  <testcase name="LoginComponent component initial state" time="0.012" classname="LoginComponent"/>
+  <testcase name="LoginComponent submitted should be true when onSubmit()" time="0.01" classname="LoginComponent"/>
+  <testcase name="EmployeePayStubComponent should create" time="0.006" classname="EmployeePayStubComponent"/>
+  <testcase name="LoginService should be created" time="0.001" classname="LoginService"/>
+  <testcase name="PagenotfoundComponent should create" time="0.003" classname="PagenotfoundComponent"/>
+  <testcase name="DefaultComponent should create" time="0.066" classname="DefaultComponent"/>
+  <testcase name="UsernotfoundComponent should create" time="0.004" classname="UsernotfoundComponent"/>
+  <testcase name="LeavetrackerComponent should create" time="0.013" classname="LeavetrackerComponent"/>
+  <system-out>
+    <![CDATA[Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0304: 'jw-modal' is not a known element:
+1. If 'jw-modal' is an Angular component, then verify that it is part of this module.
+2. If 'jw-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0304: 'jw-modal' is not a known element:
+1. If 'jw-modal' is an Angular component, then verify that it is part of this module.
+2. If 'jw-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR
+  An error was thrown in afterAll
+  TypeError: Cannot read properties of undefined (reading 'info')
+      at directCallParentKarmaMethod (http://localhost:9876/context.js:282:28)
+      at ContextKarma.boundProxyMethod [as info] (http://localhost:9876/context.js:199:9)
+      at <Jasmine>
+      at http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:674:1
+      at ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:406:1)
+      at Zone.runTask (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:178:1)
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0304: 'jw-modal' is not a known element:
+1. If 'jw-modal' is an Angular component, then verify that it is part of this module.
+2. If 'jw-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0304: 'jw-modal' is not a known element:
+1. If 'jw-modal' is an Angular component, then verify that it is part of this module.
+2. If 'jw-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'form'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModelOptions' since it isn't a known property of 'input'.'
+,Chrome 99.0.4844.84 (Windows 10) ERROR: 'NG0304: 'router-outlet' is not a known element:
+1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

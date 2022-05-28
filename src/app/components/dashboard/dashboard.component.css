@@ -1,0 +1,40 @@
+.scrollit {
+    overflow:scroll;
+    height:250px;
+
+}
+
+/* tbody{
+    overflow-y: auto;    
+    overflow-x: hidden;
+} */
+.table-fixed td,
+.table-fixed thead>tr>th{
+    font-size: 12px;
+    
+}
+.table-fixed tbody{
+    height: 200px;
+    display: block;
+    overflow-y: auto;
+}
+.table-fixed .col{
+     width: 25px;
+}
+
+.table-fixed tr{
+    display: block;
+}
+
+.mat-button-toggle-group{
+    color: #afbedf;
+}
+
+.mat-button-toggle-group:hover {
+    background-color: transparent;
+    color: #007bff !important;    
+}
+
+.mat-button-toggle-checked {
+    background-color: #007bff !important;
+}

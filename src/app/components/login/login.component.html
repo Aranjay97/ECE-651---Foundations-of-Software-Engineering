@@ -1,0 +1,33 @@
+<div class="container vh-100">
+    <div class="row justify-content-center h-100">
+        <div class="card my-auto shadow">
+            <div class="card-body px-5">
+                <div class="text-center">
+                    <mat-icon class="profile-icon">account_circle</mat-icon>
+                </div>
+                <div class="text-center">
+                    <h2>Welcome</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please enter your Login
+                    details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                <form [formGroup]="myGroup">
+                    <div class="form-group">
+                        <input (keypress)="numericOnly($event)" [(ngModel)]="input.Employee_id" [ngModelOptions]="{standalone: true}"type="number" name="Employee_id" placeholder="Employee ID" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="input.Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password" style="font-family: inherit;" class="form-control" name="Password">
+                    </div>
+                    <div class="form-group" *ngIf="showErrorMessage">
+                        <label style="text-align: center;margin-left: 25px;color: red;">Invalid Employee ID or Password</label>
+                    </div>
+                    <input type="reset" class="btn btn-primary w-100" value="Login" name="Login" (click)="onLogin()">
+                </form>
+            </div>
+            <div class="card-footer text-right">
+                <small><a routerLink="../forgotpassword" style="font-weight: bold;">Forgot Password</a></small>
+            </div>
+        </div>
+    </div>
+</div>

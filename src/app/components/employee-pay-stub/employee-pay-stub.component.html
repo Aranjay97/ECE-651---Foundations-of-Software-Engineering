@@ -1,0 +1,74 @@
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h4 style="text-align: center;margin-left: 100px;">    
+                    <strong>Employee Payment Details</strong>    
+                </h4> 
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-xl-9 col-lg-6">
+            <div class="row ">
+                <div class="col-md-4 form-group" id="htmlData">    
+                    <label style="text-align: center;margin-left: 100px;">Employee Name</label>  
+                    <input type="text" maxlength="10" class="form-control" name="EmployeeName" id="EmployeeName" placeholder="Omkar"  disabled>   
+                </div>  
+                <div class="col-md-2 form-group">    
+                    <label style="text-align: center;margin-left: 100px;">Month </label>  
+                    <input type="text" maxlength="10" class="form-control" name="Month" id="Month" placeholder="March" disabled >   
+                </div> 
+                <div class="col-md-2 form-group">    
+                    <label style="text-align: center;margin-left: 100px;"> Year </label>  
+                    <input type="text" maxlength="10" class="form-control" name="Year" id="Year" placeholder="2022"  disabled >   
+                </div>
+                <div class="col-md-4 form-group">    
+                    <label style="text-align: center;margin-left: 100px;">Bank Name</label>  
+                    <input type="text" maxlength="10" class="form-control" name="BankName" id="BankName" placeholder="Scotia" disabled  >   
+                </div> 
+                <div class="col-md-4 form-group">    
+                    <label style="text-align: center;margin-left: 100px;">Account No.</label>  
+                    <input type="text" maxlength="10" class="form-control" name="AccountNo" id="AccountNo" placeholder="220088" disabled  >   
+                </div>   
+                <!-- <div class="col-md-4 form-group">    
+                    <label style="text-align: center;margin-left: 100px;">Account Type</label>  
+                    <input type="text" maxlength="10" class="form-control" name="AccountType" id="AccountType" placeholder="" disabled  >   
+                </div> -->
+                <div class="col-md-4 form-group">    
+                    <label style="text-align: center;margin-left: 100px;">Institution Code</label>  
+                    <input type="text" maxlength="10" class="form-control" name="instCode" id="instCode" placeholder="101" disabled  >   
+                </div>
+                <!-- <table class="table" >
+                    <thead class="thead-light" >
+                        <tr>
+                            <th>Payment Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basic Pay</td>
+                        </tr>
+                        <tr>
+                            <td>Allowance</td>
+                        </tr>
+                        <tr>
+                            <td>Deductions</td>
+                        </tr>
+                        <tr>
+                            <td>PF Contributions</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <div class="col-md-5 text-right"></div>
+                <div class="col-md-4 text-right">
+                    <button style="text-align: center;margin-left: 100px;" class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

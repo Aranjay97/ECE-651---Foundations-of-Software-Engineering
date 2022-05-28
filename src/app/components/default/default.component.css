@@ -1,0 +1,164 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+ .example-sidenav-container {
+  flex: 1;
+}
+/* mat-sidenav {
+  width: 200px;
+} */
+.mat-list-item{
+  color: black;
+}
+
+.mat-drawer{
+  background:White;
+}
+
+.mat-toolbar {
+  background: #007bff;
+  color: white;
+}
+
+.example-sidenav-content {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+/* <--------------------Header CSS -----------------> */
+
+.container-profile{
+  width: 250px;
+}
+
+.card {
+background-color: white;
+height: 25rem;
+border-radius: 5px;
+border: 0px;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow: rgba(0, 0, 0, 0.7);
+color: white;
+}
+
+.card_details{
+  margin: 0 0 10px;
+  color: black;
+}
+
+.card__name {
+color: black;
+margin-top: 15px;
+font-size: 1.5em;
+}
+
+.card__image {
+height: 160px;
+width: 160px;
+border-radius: 50%;
+border: 5px solid #272133;
+margin-top: 20px;
+}
+
+.draw-border {
+box-shadow: inset 0 0 0 4px white;
+color: white;
+-webkit-transition: color 0.25s 0.0833333333s;
+transition: color 0.25s 0.0833333333s;
+position: relative;
+}
+
+.draw-border::before,
+.draw-border::after {
+border: 0 solid transparent;
+box-sizing: border-box;
+content: '';
+pointer-events: none;
+position: absolute;
+width: 0rem;
+height: 0;
+bottom: 0;
+right: 0;
+}
+
+.draw-border::before {
+border-bottom-width: 4px;
+border-left-width: 4px;
+}
+
+.draw-border::after {
+border-top-width: 4px;
+border-right-width: 4px;
+}
+
+.draw-border:hover::before {
+-webkit-transition-delay: 0s, 0s, 0.25s;
+transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+-webkit-transition-delay: 0s, 0.25s, 0s;
+transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn {
+background: none;
+border: none;
+cursor: pointer;
+line-height: 1.5;
+border-radius: 10px;
+font: 700 1.2rem 'Roboto Slab', sans-serif;
+padding: 0.6em 1.75em;
+background-color: #007bff;
+}
+
+.grid-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-gap: 20px;
+font-size: 1.2em;
+}
+
+ul li {
+  list-style: none;
+}
+
+/* <--------------------Footer CSS -----------------> */
+footer {
+  padding: 10px;
+}
+
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-drawer {
+  width: 350px;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
+
+mat-drawer-content {
+  padding: 20px;
+}

@@ -1,0 +1,157 @@
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Leaves</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-3 mb-xl-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title font-weight-bold mb-0" >Casual Leaves</h4> <h5 class="text-muted">as of {{ dateObj | date }}</h5>   
+                            <p class="h6  font-weight-bold mb-0" *ngIf="this.leavesavailable"> Available  {{this.responseleaves[0].Casual_Available}}</p>  <p></p>   
+                            <p class="h6  font-weight-bold mb-0" *ngIf="this.leavesavailable"> Used  {{this.responseleaves[0].Casual_Booked}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-3 mb-xl-0">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="card-title font-weight-bold mb-0" >Compensatory off</h4> <h5 class="text-muted">as of {{ dateObj | date }}</h5>   
+                        <span class="h6  font-weight-bold mb-0" *ngIf="this.leavesavailable"> Available  {{this.responseleaves[0].Sick_Available}}</span>  <p></p>   
+                        <span class="h6  font-weight-bold mb-0" *ngIf="this.leavesavailable"> Used  {{this.responseleaves[0].Sick_Booked}}</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-card><h4 class="ml-2 col-md-12 mb-3">    
+        <strong>Apply Leave</strong>    
+    </h4>    
+    <form> 
+        <div class="row">
+            <div class="col-md-12">
+                <p>&nbsp;</p>    
+            </div>
+            <div class="col-md-4 form-group">    
+                <label>Employee ID</label>  
+                <input type="text" maxlength="10" class="form-control" name="EmployeeID" id="EmployeeID" disabled placeholder="{{this.response[0].Employee_id}}" >   
+            </div> 
+            <div class=" col-md-6 form-group">    
+                <label>Leave Type<span style="color:red;">*</span></label>
+                <mat-form-field >
+                <mat-select>
+                    <mat-option value="CasualLeave">Casual Leave</mat-option>
+                    <mat-option value="SickLeave">Sick Leave </mat-option>
+                </mat-select> 
+                </mat-form-field>
+            </div>      
+            <div class="col-md-4 form-group">    
+                <label>Employee Name</label>    
+                <input type="text" class="form-control" name="EName" id="EName" disabled placeholder="{{this.response[0].First_Name}}&nbsp;{{this.response[0].Last_Name}}">    
+            </div>   
+            <!-- <div class="col-md-1 form-group"> 
+                <label>From<span style="color:red;">*</span></label> 
+            </div>
+            <div class="col-md-3 form-group"> 
+                <mat-form-field>   
+                    <input class="form-control" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [matDatepickerFilter]="myFilter" [(ngModel)]="leavedetails.From">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>    
+                </mat-form-field>
+            </div> -->
+            <div class=" col-md-3 form-group">    
+                <label>From</label>    
+                <input type="date" class="form-control"name="From" id="From">    
+            </div>  
+            <!-- <div class="col-md-1 form-group"> 
+                <label>To<span style="color:red;">*</span></label>    
+            </div>  -->
+            <div class=" col-md-3 form-group">    
+                <label>To</label>    
+                <input type="date" class="form-control"name="To" id="To">    
+            </div>  
+            <!-- <div class="col-md-3 form-group">    
+                <mat-form-field> 
+                    <input class="form-control" matInput [min]="minDateTo" [max]="maxDateTo" [matDatepicker]="picker1" [matDatepickerFilter]="myFilter" [(ngModel)]="leavedetails.To">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>   
+                </mat-form-field> 
+            </div>  -->
+            <div class=" col-md-6 form-group">    
+                <label>Reason of Leave<span style="color:red;">*</span></label>
+                <input type="text" class=" form-control text-uppercase">    
+            </div> 
+        </div> 
+        <div class="row">
+            <div class=" col-md-5 form-group">    
+            </div> 
+            <div class=" col-md-2 form-group"> 
+                <label></label> 
+                <button mat-raised-button color="primary" (click)="applyleaves()">Apply</button>  
+            </div> 
+        </div>
+        </form>  
+        <hr class="line"> 
+        <div class="row">    
+            <h4 class="ml-2 col-md-12 mb-3">    
+                <strong>View Leave Application</strong>    
+            </h4>  
+            <table  class="table">
+                <tr class="thead-light">
+                  <th>Leave Reason</th>
+                  <th>Leave Type</th>
+                  <th>From</th>
+                  <th>To</th>
+                </tr>
+                <tr>
+                <th>Family Function</th>
+                  <td>Casual Leave</td>
+                  <td>22-03-22</td>
+                  <td>22-03-26</td>
+                </tr>
+              </table>  
+            <!-- <table mat-table class="mat-elevation-z8">
+                <ng-container >
+                    <th mat-header-cell> No. </th>
+                    <td mat-cell > 1 </td>
+                </ng-container>
+                <ng-container >
+                    <th mat-header-cell > Employee ID </th>
+                    <td mat-cell >1  </td>
+                </ng-container>
+                <ng-container >
+                    <th mat-header-cell > Leave Type </th>
+                    <td mat-cell > Casual Leave </td>
+                </ng-container>
+                <ng-container>
+                    <th mat-header-cell > From </th>
+                    <td mat-cell> 22-03-22</td>
+                </ng-container>
+                <ng-container >
+                    <th mat-header-cell > To </th>
+                    <td mat-cell >22-03-22 </td>
+                </ng-container>
+                <ng-container >
+                    <th mat-header-cell > Leave Reason </th>
+                    <td mat-cell >Family Time </td>
+                </ng-container>
+                <ng-container>
+                    <th mat-header-cell > Status </th>
+                    <td mat-cell >Pending </td>
+                </ng-container>
+                <tr mat-header-row></tr>
+                <tr mat-row ></tr>
+            </table>       -->
+        </div>      
+    </mat-card>
+</div> 

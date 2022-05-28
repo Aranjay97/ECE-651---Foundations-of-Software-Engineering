@@ -1,0 +1,183 @@
+<div>
+    <mat-button-toggle-group #group = "matButtonToggleGroup" class="matButtonToggleGroup" value ="Personal">  
+        <mat-button-toggle value = "Personal" class="matButtonToggle"(click)="this.isToggleClicked = true">  
+            PERSONAL
+        </mat-button-toggle>  
+        <mat-button-toggle value = "Work" class="matButtonToggle"(click)="this.isToggleClicked = false">  
+            WORK
+        </mat-button-toggle>  
+    </mat-button-toggle-group>  
+    </div>
+    <div class="text-right m-2">    
+        <button class="btn btn-primary" (click)="this.isEditClicked = false;" *ngIf="this.isEditClicked" type="submit">Edit</button> 
+        <button class="btn btn-primary ml-2" *ngIf="!this.isEditClicked" (click)="this.isEditClicked = true;isToggleClicked ? updatepemployee() : updatewemployee()" type="submit">Submit</button>      
+        <button class="btn btn-danger ml-2" *ngIf="!this.isEditClicked" (click)="this.isEditClicked = true" style="float:right" type="reset">Cancel</button>    
+    </div> 
+    <div class="container-fluid" *ngIf="this.isToggleClicked">    
+        <div>    
+            <form> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&nbsp;</p>    
+                    </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Employee ID</label>  
+                        <input *ngIf="this.display" type="text" maxlength="10" class="form-control" name="EmployeeID" id="EmployeeID" disabled placeholder="{{this.response[0].Employee_id}}" >   
+                            <!-- <div>    
+                                <small class="text-danger">Mobile Number is required</small>    
+                                <small class="text-danger">Mobile number must be 10 digits</small>    
+                            </div>     -->
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label>First Name<span style="color:red;">*</span></label>
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="First_Name" [(ngModel)]="pemp.First_Name" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].First_Name}}">    
+                            <!-- <small class="text-danger">First Name is required</small>     -->
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Last Name<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="Last_Name" [(ngModel)]="pemp.Last_Name" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].Last_Name}}">    
+                            <!-- <small class="text-danger">Last Name is required</small>     -->
+                        </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Mobile<span style="color:red;">*</span></label>    
+                        <input  *ngIf="this.display" type="text" maxlength="10" class="form-control"[(ngModel)]="pemp.Phone_Number" [disabled]="isEditClicked ? true : false" name="Mobile" id="Mobile" placeholder="{{this.response[0].Phone_Number}}">    
+                            <div>    
+                                <!-- <small class="text-danger">Mobile Number is required</small>    
+                                <small class="text-danger">Must be 10 digits</small>     -->
+                            </div>    
+                        </div>      
+                    <div class="col-md-4 form-group">    
+                        <label>Email ID<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="email" class="form-control" name="Email" id="Email" [(ngModel)]="pemp.Email_Id" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].Email_Id}}">    
+                            <div>    
+                                <!-- <small class="text-danger">Email is required</small>    
+                                <small class="text-danger">Format like @ ,.com</small>     -->
+                            </div>    
+                        </div>   
+                    <!-- <div class=" col-md-3 form-group">    
+                        <label>DOB<span style="color:red;">*</span></label>    
+                        <input type="date" class="form-control"name="Dob" id="Dob" [(ngModel)]="pemp.Email_Id">     -->
+                            <!-- <small class="text-danger">Dob is required!</small>     -->
+                            <!-- <small class="text-danger">Date should be minimum 2019-01-01</small>    
+                            <small class="text-danger">Date should be maximum 2025-01-01</small>     -->
+                    <!-- </div>   -->
+                    <div class="col-md-2 form-group">    
+                            <label>Gender<span style="color:red;">*</span></label>    
+                            <!-- <select name="Gender" class="form-control" id="Gender" [ngModel]="pemp.Gender" [disabled]="isEditClicked ? true : false" > 
+                                <option value="M">M</option>
+                                <option value="F">F</option>  
+                            </select>  -->
+                            <input type="text" *ngIf="this.display" class="form-control"name="Gender" id="Gender" [(ngModel)]="pemp.Gender" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].Gender}}">    
+                            <!-- <small class="text-danger">Gender is required</small>     -->
+                    </div>
+                    <div class="col-md-2 form-group">    
+                        <label>Marital Status</label>    
+                        <!-- <select name="Gender" class="form-control">    
+                            <option value="">-Select-</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Widowed">Widowed</option>
+                            <option value="Separated">Separated</option>
+                            <option value="Divorced">Divorced</option> 
+                        </select>     -->
+                        <input type="text" *ngIf="this.display" class="form-control"name="Marital_Status" id="Marital_Status" [(ngModel)]="pemp.Marital_Status" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].Marital_Status}}">    
+                    </div> 
+                    <div class="col-md-4 form-group">    
+                        <label>Alternate Email ID</label>    
+                        <input type="email" *ngIf="this.display" class="form-control" name="Alternate_Email_Id" id="Alternate_Email_Id" [(ngModel)]="pemp.Alternate_Email_Id" [disabled]="isEditClicked ? true : false" placeholder="{{this.response[0].Alternate_Email_Id}}">    
+                            <div>    
+                                <!-- <small class="text-danger">Email is required</small>     -->
+                                <!-- <small class="text-danger">Format like @ ,.com</small>     -->
+                            </div>    
+                    </div>     
+                </div>    
+                <hr class="line"> 
+                <div class="row">    
+                    <h4 class="ml-2 col-md-12 mb-3">    
+                        <strong>Emergency Contact Details</strong>    
+                    </h4>    
+                    <div class=" col-md-3 form-group">    
+                        <label> Name<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" [(ngModel)]="pemp.Emergency_Contact_Name" [disabled]="isEditClicked ? true : false" name="Emergency_Contact_Name" placeholder="{{this.response[0].Emergency_Contact_Name}}">    
+                            <!-- <small class="text-danger">Name is required</small>     -->
+                        </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Mobile<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" maxlength="10" class="form-control" [(ngModel)]="pemp.Emergency_Contact_Number" [disabled]="isEditClicked ? true : false" name="Emergency_Contact_Number" id="EmergencyMobile"  placeholder="{{this.response[0].Emergency_Contact_Number}}">    
+                        <div>    
+                            <!-- <small class="text-danger">Mobile Number is required</small>     -->
+                            <!-- <small class="text-danger">Must be 10 digits</small>     -->
+                        </div>    
+                    </div>      
+                </div>      
+            </form>    
+        </div>    
+    </div> 
+    <div class="container-fluid" *ngIf="!this.isToggleClicked">    
+        <div>    
+            <form>    
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&nbsp;</p>    
+                    </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Employee ID</label>    
+                        <input *ngIf="this.display" type="text" maxlength="10" class="form-control" name="EmployeeID" id="EmployeeID" disabled placeholder="{{this.response[0].Employee_id}}">    
+                            <!-- <div>    
+                                <small class="text-danger">Mobile Number is required</small>    
+                                <small class="text-danger">Mobile number must be 10 digits</small>    
+                            </div>     -->
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label>Date of Joining<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="date" class="form-control"name="Doj" id="Doj" [disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.Date_of_Joining" placeholder="{{this.response[1].Date_of_Joining}}">    
+                            <!-- <small class="text-danger">Doj is required!</small>     -->
+                            <!-- <small class="text-danger">Date should be minimum 2019-01-01</small>    
+                            <small class="text-danger">Date should be maximum 2025-01-01</small>     -->
+                        </div>  
+                    <div class=" col-md-3 form-group">    
+                        <label> Designation<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display"type="text" class=" form-control text-uppercase" name="Designation"[disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.Designation" placeholder="{{this.response[1].Designation}}">    
+                            <!-- <small class="text-danger">Designation is required</small>     -->
+                        </div>
+                    <div class=" col-md-3 form-group">    
+                        <label> Department<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="Department" [disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.Department" placeholder="{{this.response[1].Department}}">    
+                            <!-- <small class="text-danger">Department is required</small>     -->
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Employee Status<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="EmployeeStatus"[disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.Employee_Status" placeholder="{{this.response[1].Employee_Status}}">    
+                            <!-- <small class="text-danger">Employee Status is required</small>     -->
+                        </div>
+                    <div class=" col-md-3 form-group">    
+                        <label> Reporting To</label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="ReportingTo"[disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.Reporting_To" placeholder="{{this.response[1].Reporting_To}}">    
+                        </div> 
+                    <div class=" col-md-3 form-group">    
+                        <label> Employee Type<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" class=" form-control text-uppercase" name="EmployeeType" [disabled]="isEditClicked ? true : false"[(ngModel)]="wemp.Employee_Type" placeholder="{{this.response[1].Employee_Type}}">    
+                            <!-- <small class="text-danger">Employee Type is required</small>     -->
+                        </div>
+                    <div class="col-md-3 form-group">    
+                        <label>Work Phone</label>    
+                        <input *ngIf="this.display" type="text" maxlength="10" class="form-control" name="WorkPhone" [disabled]="isEditClicked ? true : false" id="WorkPhone" [(ngModel)]="wemp.Work_Phone" placeholder="{{this.response[1].Work_Phone}}">    
+                        <div>    
+                            <!-- <small class="text-danger">Mobile Number is required</small>     -->
+                            <!-- <small class="text-danger">Mobile number must be 10 digits</small>     -->
+                        </div>    
+                    </div> 
+                    <div class="col-md-3 form-group"></div>
+                    <!-- <div class="col-md-3 form-group">    
+                        <label>Role</label>    
+                        <input type="text" class=" form-control text-uppercase" id="Role" maxlength="50" disabled placeholder="{{this.response[1].Role}}">    
+                    </div>    -->
+                    <div class="col-md-2 form-group">    
+                        <label>CTC<span style="color:red;">*</span></label>    
+                        <input *ngIf="this.display" type="text" maxlength="10" class="form-control" name="CTC" [disabled]="isEditClicked ? true : false" [(ngModel)]="wemp.CTC" id="CTC"  placeholder="{{this.response[1].CTC}}">     
+                        <!-- <small class="text-danger">CTC is required</small>     -->
+                    </div>         
+                </div>      
+            </form>    
+        </div>    
+    </div>  

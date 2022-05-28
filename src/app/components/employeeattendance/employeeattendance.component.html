@@ -1,0 +1,129 @@
+<div class="content container-fluid">
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="page-title">Attendance</h3>
+        </div>
+    </div>
+</div> 
+<div class="row">
+    <div class="col-md-4">
+        <div class="card punch-status">
+            <div class="card-body">
+                <h3 class="card-title">Mark Attendance </h3>
+                <div class="punch-det">
+                    <h5>{{ today | date}} </h5>
+                </div> 
+                <div class="punch-info">
+                    <div class="punch-hours">
+                        <h5><small class="text-muted">Please Click In to record today's attendance</small></h5>
+                    </div>
+                </div> 
+                <div class="punch-btn-section">
+                    <mat-button-toggle-group #toggleGroup = "matButtonToggleGroup">
+                        <button mat-raised-button color="primary" value="Check In"[disabled]="isDisabled" (click)="onClick()" type="button">{{Check_In ? "Check In" : "Check Out"}}</button>
+                    </mat-button-toggle-group>
+                        <div> 
+                            <!-- <span *ngIf="visible">Checked {{this.status}} Successful &nbsp;{{ today | date:'mediumDate' }}&nbsp; {{ today | date:'HH:mm' }}</span>  -->
+                            <span *ngIf="visible">Checked {{this.status}} Successful </span> 
+                        </div>
+                        <div> 
+                            <span *ngIf="isDisabled && !visible">Check In & Out for today is Completed</span> 
+                        </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card att-statistics">
+            <div class="card-body">
+                <h5 class="card-title">Statistics</h5>
+                <div class="stats-list">
+                    <div class="stats-info">
+                        <p>Today <strong>3.45 <small>/ 8 hrs</small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 31%" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="stats-info">
+                        <p>This Week <strong>28 <small>/ 40 hrs</small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 31%" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="stats-info">
+                        <p>This Month <strong>90 <small>/ 160 hrs</small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 62%" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card recent-activity">
+            <div class="card-body">
+                <h5 class="card-title">Today Activity</h5>
+                <ul class="res-activity-list">
+                    <li>
+                        <p class="mb-0">Punch In</p>
+                        <div *ngIf="this.display"><p class="res-activity-time">{{this.filter_data.Punch_In}}</p></div>
+                    </li>
+                    <li>
+                        <p class="mb-0">Punch Out</p>
+                        <div *ngIf="this.display"><p class="res-activity-time">{{this.filter_data.Punch_Out}}</p></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row filter-row">
+    <!-- <div class="col-sm-3">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Month and Year</mat-label>
+            <input matInput [matDatepicker]="dp">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp
+                            startView="multi-year"
+                            panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-sm-3">
+        <a href="#" class="btn btn-success btn-block"> Search </a>
+    </div> -->
+</div>
+<div class="col-md-3 col-sm-3 col-xs-3">&nbsp;</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped custom-table mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date </th>
+                        <th>Punch In</th>
+                        <th>Punch Out</th>
+                        <th>Working Hours</th>
+                        <th>Work Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of this.attendance_data; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{employee.Punch_In}}</td>
+                        <td>{{employee.Punch_Out}}</td>
+                        <td>{{employee.Date_col}}</td>
+                        <td>{{employee.Working_hours}}</td>
+                        <td>{{employee.Work_Notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

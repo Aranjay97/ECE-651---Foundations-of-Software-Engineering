@@ -1,0 +1,53 @@
+html, body {
+    height: 100%;
+    /* background-image: url(""); */
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+}  
+   */
+
+mat-card{ 
+    display: flex;
+    height:41% ;
+    background-color: gray;
+}  
+
+.mat-icon{
+    width: 0px;
+}
+.login{
+    width:90%;
+    height:75% ;
+    background-color: #4267B2;
+    font-weight: 800;
+    border-radius: 5px;
+    text-align: center;
+    color: #FFFFFF;
+} 
+.profile-icon{
+    font-size:75px;
+    margin-right: 75px;
+}
+mat-form-field{
+    width:90%;
+}
+
+mat-grid-tile{
+    width:400px;
+}
+
+.example-card {
+    max-width: 325px;
+    margin-left: 500px;
+    margin-top:50px;
+} 
+
+input[type="password"] {
+    font-family: caption;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

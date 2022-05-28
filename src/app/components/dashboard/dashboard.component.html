@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card punch-status">
+            <div class="card-body">
+                <h3 class="card-title">Mark Attendance </h3>
+                <div class="punch-det">
+                    <h5>{{ today | date}} </h5>
+                </div> 
+                <div class="punch-info">
+                    <div class="punch-hours">
+                        <h5><small class="text-muted">Please Click In to record today's attendance</small></h5>
+                    </div>
+                </div> 
+                <div class="punch-btn-section">
+                    <mat-button-toggle-group #toggleGroup = "matButtonToggleGroup">
+                        <button mat-raised-button color="primary" value="Check In"[disabled]="isDisabled" (click)="onClick()" type="button">{{Check_In ? "Check In" : "Check Out"}}</button>
+                    </mat-button-toggle-group>
+                        <div> 
+                            <!-- <span *ngIf="visible">Checked {{this.status}} Successful &nbsp;{{ today | date:'mediumDate' }}&nbsp; {{ today | date:'HH:mm' }}</span>  -->
+                            <!-- <span *ngIf="visible">Checked {{this.status}} Successful </span>  -->
+                        </div>
+                        <div> 
+                            <span *ngIf="isDisabled && !visible">Check In & Out for today is Completed</span> 
+                        </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+     <div class="col-md-6">
+        <div class="card att-statistics">
+            <div class="card-body">
+                <h4 class="card-title">Leave Request</h4>
+                <div class="stats-list">
+                    <div class="stats-info">
+                        <p>Casual Leave <strong> 5 <small>/ 10 </small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="stats-info">
+                        <p>Sick Leave <strong> 3 <small>/ 10</small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="stats-info">
+                        <p>Comp off <strong> 1 <small>/ 5 </small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="stats-info">
+                    <p>Loss of Pay <strong>1 <small> </small></strong></p>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 62%" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Event</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>New Year's Day</td>
+                    <td>1st January 2022</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Family Day</td>
+                    <td>21st Feburary 2022</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Good Friday</td>
+                    <td>15th April 2022</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>New Year's Day</td>
+                    <td>1st January 2022</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Easter Monday </td>
+                    <td>18th April 2022</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Victoria Day </td>
+                    <td> 23rd May 2022</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Canada Day</td>
+                    <td>1st July 2022</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Halloween </td>
+                    <td> 31st October 2022</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Christmas Holiday </td>
+                    <td>25 December 2022</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="col-md-6" style="padding-top:25px">
+        <div class="card punch-status">
+            <div class="card-body">
+                <h3 class="card-title">Pending To Do Requests </h3>
+                <div class="punch-info">
+                    <div class="punch-hours">
+                        <span>Awaiting your Actions </span>
+                        <h6> You currently have no pending requests</h6>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
